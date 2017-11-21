@@ -27,5 +27,8 @@ def ast(lispf_data):
 
     data = lispf_data.read()
     print(lexer(data))
+    tokens_list = [token for token in (lexer(data)) if token.type != 'COMMENT' and token.type != 'NEWLINE' ]
+    ast = parser(tokens_list)
+    pprint.pprint(ast)
 
 ast()
